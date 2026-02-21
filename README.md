@@ -16,3 +16,16 @@ An MLP model to predict SWE compensation based on real-world dataset
 - Add new field seniority based on JOB_TITLE
 - Categorize WORKERSITE_CITY into metro_tier
 - One-Hot Encode the categorical columns
+
+
+## Model Training
+
+- Final val MAE: ~$14,900
+- Final val RMSE: ~$22,400
+- Epochs to convergence: ~20
+- Dataset size: 259,936 records
+- Features: 82 (after One-Hot Encoding)
+
+Training Plot
+
+![alt text](media/training_curve.png)
