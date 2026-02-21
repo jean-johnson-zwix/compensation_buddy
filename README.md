@@ -71,6 +71,7 @@ This plot also shows that the model underestimates high-earners because of the m
 ## How to Run
 ```
 git clone https://github.com/jean-johnson-zwix/compensation_buddy.git
-pip install streamlit torch numpy pandas
+cd src
+pip install -r requirements.txt
 streamlit run app.py
 ```
