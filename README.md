@@ -1,8 +1,22 @@
-# compensation_buddy
-An MLP model to predict SWE compensation based on real-world dataset
+# Compensation Buddy
+Compensation Buddy is an MLP model can help you figure out your salary based on role, location, and company type.
 
+## What it does
+Based on the user parameters below, it gives you a predicted annual salary
+- Role Category
+- Seniority Level
+- Wage Level
+- Metro Tier
+- Industry
+- Work State
+
+## Dataset
+- Source: US Department of Labor H1B LCA Disclosure Data
+- Size: 259,936 certified tech records
+- Target variable: Annual wage (USD)
+
+# Implementation
 ## Data Pre-Processing
-
 ### Data Cleaning
 - WAGE_UNIT_OF_PAY: convert into annual wages
 - OUTLIER_FILTER: keep only range 50000-400000
@@ -38,6 +52,25 @@ Training Plot
 
 The model is pulling towards the mean because it has not captured enough variance in the high salary range. It could be because we the dataset don't have the years of experience field.
 
+### MAE by Salary Range
+
 ![alt text](media/mae_by_salary_range.png)
 
 This plot also shows that the model underestimates high-earners because of the missing experience parameter
+
+## Model Performance
+- MAE: $14,897
+- RMSE: $22,352
+- Best accuracy range: $75K–$200K salaries
+
+## Limitations
+- Dataset lacks years of experience which is the single strongest predictor of compensation
+- Model underestimates high earners (>$200K) due to high variance in that range
+- The model was trained only based on H1B filings hence it does not reflect the full market
+
+## How to Run
+```
+git clone https://github.com/jean-johnson-zwix/compensation_buddy.git
+pip install streamlit torch numpy pandas
+streamlit run app.py
+```
