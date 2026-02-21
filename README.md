@@ -29,3 +29,15 @@ An MLP model to predict SWE compensation based on real-world dataset
 Training Plot
 
 ![alt text](media/training_curve.png)
+
+## Model Evaluation
+
+### Predicted Salary vs Actual Salary
+
+![alt text](media/predicted_vs_actual.png)
+
+The model is pulling towards the mean because it has not captured enough variance in the high salary range. It could be because we the dataset don't have the years of experience field.
+
+![alt text](media/mae_by_salary_range.png)
+
+This plot also shows that the model underestimates high-earners because of the missing experience parameter
