@@ -10,6 +10,16 @@ Based on the user parameters below, it gives you a predicted annual salary
 - Industry
 - Work State
 
+## Tech Stack
+
+| Category | Technology |
+|---|---|
+| Model | PyTorch (MLP with LayerNorm + GELU) |
+| Data Processing | Pandas, NumPy |
+| App | Streamlit |
+| Dataset | US DOL H1B LCA Disclosure Data |
+| Language | Python 3 |
+
 ## Dataset
 - Source: US Department of Labor H1B LCA Disclosure Data
 - Size: 259,936 certified tech records
