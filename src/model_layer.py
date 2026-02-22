@@ -3,6 +3,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import json
+import os
 
 # Feedforward neural network
 class MLP(nn.Module):
@@ -26,12 +27,16 @@ class MLP(nn.Module):
         return self.net(x)
         
 def load_model():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(BASE_DIR, 'model', 'best.pt')
+    scalers_path = os.path.join(BASE_DIR, 'model', 'scalers.npz')
+
     # Load feature columns
-    with open('feature_cols.json', 'r') as f:
+    with open(os.path.join(BASE_DIR, 'feature_cols.json'), 'r') as f:
         feature_cols = json.load(f)
 
     # Load scalers
-    s = np.load('model/scalers.npz')
+    s = np.load(scalers_path)
     scalers = {
         'x_mean': s['x_mean'],
         'x_std': s['x_std'],
@@ -40,7 +45,7 @@ def load_model():
     }
 
     # Load model
-    ckpt = torch.load('model/best.pt', map_location='cpu')
+    ckpt = torch.load(model_path, map_location='cpu')
     cfg = ckpt['cfg']
 
     model = MLP(cfg['in_dim'], cfg['out_dim'], 
